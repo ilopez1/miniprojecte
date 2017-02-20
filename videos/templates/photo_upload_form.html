@@ -1,0 +1,6 @@
+{% extends 'jfu/upload_form.html' %}
+
+{% block JS_OPTS %}
+sequentialUploads: true,
+acceptFileTypes: /(\.|\/)(avi|mp4|mkv?g)$/i
+{% endblock %}

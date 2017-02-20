@@ -1,0 +1,44 @@
+.contenedor {
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    width: 900px;
+}
+
+#carpeta{
+    
+    margin-left: 5px;
+    width: 189px;
+    height: 900px;
+    background-color: blue;
+    flex: auto;
+    float: left;
+    border-color: #337ab7;
+    border: 1px solid transparent;
+    border-radius: 4px
+    
+}
+
+.table {
+    flex: auto;
+    float: left;
+    
+}
+
+#barra {
+    width: 50%;
+    margin: 0 auto; 
+}
+
+.panel {
+    margin-left: 200px;
+    height: 900px;
+}
+
+.pagination {
+    position: absolute;
+    margin-left: 10px;
+    bottom: 0;
+    height: 0%;
+    width: 100%;
+}

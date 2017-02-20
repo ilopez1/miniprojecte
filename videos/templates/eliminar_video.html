@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href=""></a>
+    <form action="" method="post" class="container">
+        {% csrf_token %}
+        <h4>Segur que vols esborrar el video <strong>{{ video.nom }}</strong> ?</h4>
+        <input type="submit" class="btn btn-danger btn-lg" value="Borrar"/>
+        <button type="button" class="btn btn-default btn-lg"><a href="../../llista_videos.html">Cancelar</a></button>
+    </form>
+{% endblock %}

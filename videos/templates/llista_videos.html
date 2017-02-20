@@ -1,0 +1,80 @@
+{% extends 'base.html' %}{% block title %}StreamLoad{% endblock %}{% block extra-head %}
+{% endblock %}
+{% block content %} {% if user.is_authenticated %}
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="contenedor">
+              {% load jfutags %} 
+                {% jfu 'photo_upload_form.html' 'videos:jfu_upload'%}
+        <div id="carpeta">
+            <span>carpeta 1</span>
+    
+        </div>
+        
+        <div id="table" class="table-responsive panel panel-primary">
+            <table>
+                <tr class="text-center">
+                    <td>TITOL</td>
+                    <td>TAMANY</td>
+                    <td>FORMATO</td>
+                    <td>DATA</td>
+                    <td>Video Download</td>
+                    <td>Video Preview</td>
+                    <td>Eliminar</td>
+                </tr>
+            </table>
+            <table id="taula" class="table-responsive">
+                <tbody>
+    
+                    {% for video in video_list %}
+                    <tr class="text-center">
+                        <td>{{video.titol}}</td>
+                        <td>{{video.tamany}} BYTE</td>
+                        <td>{{video.formato}}</td>
+                        <td>{{video.data}}</td>
+                        <td>
+                            <a href="{{video.video.url}}" download>DOWNLOAD</a>
+                        </td>
+                        <td>
+                            <a href="{{video.video.url}}">PREVIEW</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'videos:eliminarvideo' video.pk %}"><span></span>Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <ul class="pagination">
+                        {% if video_list.has_previous %}
+                            <li><a href="?page={{ video_list.previous_page_number }}">«</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#">«</a></li>
+                        {% endif %} 
+                        
+                        {% for page in video_list.paginator.page_range %}
+                        <li class="
+                            {% if video_list.number == page  %}
+                                active
+                            {% endif %}">
+                                <a href="?page={{page}}">{{ page }}</a></li>
+                        {% endfor %} 
+                        
+                        {% if video_list.has_next %}
+                        <li><a href="?page={{ video_list.next_page_number }}">»</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#">»</a></li>
+                        {% endif %}
+                    </ul>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</body>
+
+</html>
+
+{% endif %} {% endblock %}
